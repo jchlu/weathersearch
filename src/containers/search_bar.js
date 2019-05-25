@@ -11,6 +11,7 @@ export default class SearchBar extends Component {
   onFormSubmit (event) {
     event.preventDefault()
     console.log(this.state.term)
+    // process.env.API_KEY
   }
 
   render() {
