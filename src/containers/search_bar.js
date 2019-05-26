@@ -9,8 +9,7 @@ class SearchBar extends Component {
     super(props)
 
     this.state = {
-      term: '',
-      country: 'DO'
+      term: ''
     }
     this.onFormSubmit = this.onFormSubmit.bind(this)
   }
@@ -19,7 +18,7 @@ class SearchBar extends Component {
     /** Stop normal submit action on <Enter> or button click */
     event.preventDefault()
     /** Trigger action passed in by mapDispatchToProps */
-    this.props.fetchWeather(this.state.term, this.state.country)
+    this.props.fetchWeather(this.state.term, this.props.activeCountry)
     /** Clear the term (and therefore the input box, which uses state.term for value) */
     this.setState({ term: '' })
   }

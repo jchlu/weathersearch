@@ -10,7 +10,7 @@ import reducers from './reducers/'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 ReactDOM.render(
-  <Provider store={createStore(reducers, /* preloadedState, */ composeEnhancers(
+  <Provider store={createStore(reducers, composeEnhancers(
         applyMiddleware(ReduxPromise)
       ))}>
     <App />
