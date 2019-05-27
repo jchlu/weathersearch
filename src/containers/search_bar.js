@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindCreators, bindActionCreators } from 'redux'
 import { fetchWeather } from '../actions/'
 import CountryList from './country_list'
+import UnitToggle from './unit_toggle'
 
 class SearchBar extends Component {
   constructor(props) {
@@ -26,11 +27,14 @@ class SearchBar extends Component {
   render() {
     return (
       <form onSubmit={this.onFormSubmit}>
-        <div className="form-row align-items-center">
-          <div className="col-5 my-1">
+        <div className='form-row align-items-center'>
+          <div className='col-1 my-1'>
+            <UnitToggle />
+          </div>
+          <div className='col-5 my-1'>
             <input
-              placeholder="Get a five-day forecast in your favourite cities"
-              className="form-control"
+              placeholder='Get a five-day forecast in your favourite cities'
+              className='form-control'
               value={this.state.term}
               onChange={event => {
                 this.setState({ term: event.target.value })
@@ -38,10 +42,8 @@ class SearchBar extends Component {
             />
           </div>
           <CountryList />
-          <div className="col-1 my-1">
-            <button type="submit" className="btn btn-secondary">
-              Submit
-            </button>
+          <div className='col-1 my-1'>
+            <button type='submit' className='btn btn-secondary'> Submit </button>
           </div>
         </div>
       </form>

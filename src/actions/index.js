@@ -4,8 +4,9 @@ const ROOT_URL = `https://api.openweathermap.org/data/2.5/forecast?APPID=${
   process.env.API_KEY
 }`
 
-export const SELECT_COUNTRY = 'SELECT_COUNTRY'
 export const FETCH_WEATHER = 'FETCH_WEATHER'
+export const SELECT_COUNTRY = 'SELECT_COUNTRY'
+export const SELECT_UNIT = 'SELECT_UNIT'
 
 export const fetchWeather = (city, country) => {
   const url = `${ROOT_URL}&q=${city},${country}`
@@ -27,4 +28,9 @@ export const fetchWeather = (city, country) => {
 export const selectCountry = country => ({
   type: SELECT_COUNTRY,
   payload: country
+})
+
+export const selectUnit = unit => ({
+  type: SELECT_UNIT,
+  payload: unit
 })
