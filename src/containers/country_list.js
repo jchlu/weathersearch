@@ -1,36 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { selectCountry } from '../actions/'
 
-class CountryList extends Component {
-  renderList() {
-    return this.props.countries.map(country => {
-      // const selected = country.code == this.state.activeCountry ? defaultValue : ''
-      return (
-        <option key={country.code} value={country.code}>
-          {country.description}
-        </option>
-      )
-    })
-  }
+const CountryList = ({ countries, selectCountry, activeCountry }) => (
+  <div className='col-auto my-1'>
+    <select
+      value={activeCountry}
+      onChange={event => selectCountry(event.target.value)}
+      className='custom-select mr-sm-2'
+      id='country'
+    >
+      {renderList(countries)}
+    </select>
+  </div>
+)
 
-  render() {
-    return (
-      <div className='col-auto my-1'>
-        <select
-          value={this.props.activeCountry}
-          onChange={event => this.props.selectCountry(event.target.value)}
-          className='custom-select mr-sm-2'
-          id='country'
-        >
-          {this.renderList()}
-        </select>
-      </div>
-    )
-  }
-}
+const renderList = countries => countries.map(country => (
+  <option key={country.code} value={country.code}>
+    {country.description}
+  </option>
+))
 
 const mapStateToProps = state => ({
   countries: state.countries,
@@ -38,7 +29,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ selectCountry: selectCountry }, dispatch)
+  bindActionCreators({ selectCountry }, dispatch)
 
 export default connect(
   mapStateToProps,

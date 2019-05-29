@@ -11,8 +11,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 ReactDOM.render(
   <Provider store={createStore(reducers, composeEnhancers(
-        applyMiddleware(ReduxPromise)
-      ))}>
+    applyMiddleware(ReduxPromise)
+  ))}>
     <App />
   </Provider>
   , document.getElementById('app'))
