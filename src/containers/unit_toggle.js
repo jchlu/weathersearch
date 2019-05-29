@@ -14,7 +14,7 @@ class UnitToggle extends Component {
             id='metric'
             autoComplete='off'
             onClick={event => this.props.selectUnit(event.target.id)}
-          /> C
+          />C
         </label>
         <label className={`btn btn-secondary ${this.props.activeUnit === 'imperial' ? 'active' : ''}`}>
           <input
@@ -23,7 +23,16 @@ class UnitToggle extends Component {
             id='imperial'
             autoComplete='off'
             onClick={event => this.props.selectUnit(event.target.id)}
-          /> F
+          />F
+        </label>
+        <label className={`btn btn-secondary ${this.props.activeUnit === 'standard' ? 'active' : ''}`}>
+          <input
+            type='radio'
+            name='unit'
+            id='standard'
+            autoComplete='off'
+            onClick={event => this.props.selectUnit(event.target.id)}
+          />K
         </label>
       </div>
     )

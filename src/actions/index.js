@@ -8,8 +8,8 @@ export const FETCH_WEATHER = 'FETCH_WEATHER'
 export const SELECT_COUNTRY = 'SELECT_COUNTRY'
 export const SELECT_UNIT = 'SELECT_UNIT'
 
-export const fetchWeather = (city, country) => {
-  const url = `${ROOT_URL}&q=${city},${country}`
+export const fetchWeather = (city, country, units) => {
+  const url = `${ROOT_URL}&q=${city},${country}&units=${units}`
   const request = axios.get(url)
 
   // At this stage, the request is a promise, assigned to the payload key.

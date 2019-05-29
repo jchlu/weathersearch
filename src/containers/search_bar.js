@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindCreators, bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux'
 import { fetchWeather } from '../actions/'
 import CountryList from './country_list'
 import UnitToggle from './unit_toggle'
@@ -19,7 +19,7 @@ class SearchBar extends Component {
     /** Stop normal submit action on <Enter> or button click */
     event.preventDefault()
     /** Trigger action passed in by mapDispatchToProps */
-    this.props.fetchWeather(this.state.term, this.props.activeCountry)
+    this.props.fetchWeather(this.state.term, this.props.activeCountry, this.props.activeUnit)
     /** Clear the term (and therefore the input box, which uses state.term for value) */
     this.setState({ term: '' })
   }
@@ -28,9 +28,7 @@ class SearchBar extends Component {
     return (
       <form onSubmit={this.onFormSubmit}>
         <div className='form-row align-items-center'>
-          <div className='col-1 my-1'>
-            <UnitToggle />
-          </div>
+          <UnitToggle />
           <div className='col-5 my-1'>
             <input
               placeholder='Get a five-day forecast in your favourite cities'
@@ -51,10 +49,7 @@ class SearchBar extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  term: state.term,
-  activeCountry: state.activeCountry
-})
+const mapStateToProps = ({ term, activeCountry, activeUnit }) => ({ term, activeCountry, activeUnit })
 
 /** Make actions available inside the class */
 const mapDispatchToProps = dispatch =>
