@@ -2,16 +2,9 @@ import _ from 'lodash'
 import React from 'react'
 import { connect } from 'react-redux'
 import Chart from '../components/chart'
+import UnitLetter from '../components/unit_letter'
 
 const WeatherList = ({ weather, activeUnit }) => {
-  // TODO: unitLetter should be a UnitLetter component
-  const unitLetter = (() => {
-    switch (activeUnit) {
-      case 'metric': return 'C'
-      case 'imperial': return 'F'
-      default: return 'K'
-    }
-  })()
   const renderWeather = cityData => {
     const temps = cityData.list.map(city => city.main.temp)
     const meanTemp = _.round(_.mean(temps), 2)
@@ -24,7 +17,10 @@ const WeatherList = ({ weather, activeUnit }) => {
         <th scope='row'>{cityData.city.name}</th>
         <td>
           <Chart data={temps} color='orange' />
-          <div>{`Mean Temp: ${meanTemp} ${unitLetter}`}</div>
+          <div>
+            {`Mean Temp: ${meanTemp} `}
+            <UnitLetter activeUnit={activeUnit}/>
+          </div>
         </td>
         <td>
           <Chart data={pressures} color='green' />
