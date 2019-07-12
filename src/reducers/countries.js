@@ -1,4 +1,4 @@
-export default () => [
+export default _ => [
   { code: 'AD', description: 'Andorra' },
   { code: 'AE', description: 'United Arab Emirates' },
   { code: 'AF', description: 'Afghanistan' },

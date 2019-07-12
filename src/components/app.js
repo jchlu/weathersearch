@@ -3,7 +3,7 @@ import SearchBar from '../containers/search_bar'
 import CountryList from '../containers/country_list'
 import WeatherList from '../containers/weather_list'
 
-export default () => (
+export default _ => (
   <div>
     <SearchBar />
     <WeatherList />

@@ -32,7 +32,8 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.API_KEY': JSON.stringify(process.env.API_KEY)
+      'process.env.WEATHER_API_KEY': JSON.stringify(process.env.WEATHER_API_KEY),
+      'process.env.MAPS_API_KEY': JSON.stringify(process.env.MAPS_API_KEY)
     })
   ],
   devtool: 'inline-source-map',

@@ -3,5 +3,10 @@ svg {
 }
 
 label.btn {
-    cursor: pointer
+    cursor: pointer;
+}
+
+td, th {
+    vertical-align: middle !important;
+    text-align: center !important;
 }

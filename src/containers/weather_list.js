@@ -3,6 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Chart from '../components/chart'
 import UnitLetter from '../components/unit_letter'
+import GoogleMap from '../components/google_map'
 
 const WeatherList = ({ weather, activeUnit }) => {
   const renderWeather = cityData => {
@@ -12,9 +13,12 @@ const WeatherList = ({ weather, activeUnit }) => {
     const meanPressure = _.round(_.mean(pressures), 2)
     const humidities = cityData.list.map(city => city.main.humidity)
     const meanHumidity = _.round(_.mean(humidities), 2)
+    const { lon, lat } = cityData.city.coord
     return (
       <tr key={cityData.city.id} >
-        <th scope='row'>{cityData.city.name}</th>
+        <td scope='row'>
+          {<GoogleMap lon={lon} lat={lat} cityName={cityData.city.name} />}
+        </td>
         <td>
           <Chart data={temps} color='orange' />
           <div>
