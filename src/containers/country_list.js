@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -17,7 +18,7 @@ const CountryList = ({ countries, selectCountry, activeCountry }) => (
   </div>
 )
 
-const renderList = countries => countries.map(country => (
+const renderList = countries => _.sortBy(countries, ['description']).map(country => (
   <option key={country.code} value={country.code}>
     {country.description}
   </option>
